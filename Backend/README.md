@@ -139,3 +139,83 @@ POST /users/login
 }
 ```
 
+## Get User Profile
+Endpoint for retrieving the logged-in user's profile.
+
+### HTTP Method
+```
+GET
+```
+
+### Endpoint
+```
+GET /users/profile
+```
+
+### Response Status Codes
+
+| Status Code | Description |
+|------------|-------------|
+| 200        | User profile retrieved successfully |
+| 401        | Unauthorized access |
+| 500        | Internal server error |
+
+### Example Success Response
+```json
+{
+  "id": "uuid",
+  "email": "john.doe@example.com",
+  "firstname": "John",
+  "lastname": "Doe"
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Unauthorized access"
+}
+```
+
+## Logout User
+Endpoint for logging out the user.
+
+### Description
+
+Logout the current user and blacklist the token porvided in cookie or headers.  
+
+### HTTP Method
+```
+GET
+```
+
+### Authentication 
+
+Requires a valid JWT token in the Authorization header or cookie:
+
+### Endpoint
+```
+GET /users/logout
+```
+
+### Response Status Codes
+
+| Status Code | Description |
+|------------|-------------|
+| 200        | User successfully logged out |
+| 500        | Internal server error |
+
+### Example Success Response
+```json
+{
+  "message": "Logged out"
+}
+```
+
+### Example Error Response
+```json
+{
+  "message": "Internal server error"
+}
+```
+

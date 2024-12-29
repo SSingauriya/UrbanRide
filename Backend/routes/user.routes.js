@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {body} = require("express-validator");
 const userController = require('../controllers/user.controller');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 router.post('/register', [
     body('email').isEmail().withMessage('Invalid email'),
@@ -11,20 +12,6 @@ router.post('/register', [
 userController.registerUser
 );
 
-/**
- * @api {post} /users/login Login a user
- * @apiName LoginUser
- * @apiGroup User
- * 
- * @apiParam {String} email User's email.
- * @apiParam {String} password User's password.
- * 
- * @apiSuccess {String} token Authentication token.
- * @apiSuccess {Object} user User's information.
- * 
- * @apiError {Object[]} errors List of validation errors.
- * @apiError {String} message Error message.
- */
 
 router.post('/login', [
     body('email').isEmail().withMessage('Invalid email'),
@@ -32,5 +19,9 @@ router.post('/login', [
 ],
 userController.loginUser
 );
+
+router.get('/profile', authMiddleware.authUser , userController.getUserProfile);
+
+router.get('/logout', authMiddleware.authUser, userController.logoutUser);
 
 module.exports = router;
