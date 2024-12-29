@@ -1,7 +1,14 @@
 # User Registration API Documentation
 
+This is the backend API documentation for the User Registration service.
+
 ## Register User
 Endpoint for creating a new user account.
+
+### HTTP Method
+```
+POST
+```
 
 ### Endpoint
 ```
