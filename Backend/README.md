@@ -70,3 +70,4 @@ POST /users/register
   "message": "Email already exists"
 }
 ```
+
