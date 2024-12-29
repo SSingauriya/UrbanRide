@@ -71,3 +71,71 @@ POST /users/register
 }
 ```
 
+## Login User
+Endpoint for logging in a user.
+
+### HTTP Method
+```
+POST
+```
+
+### Endpoint
+```
+POST /users/login
+```
+
+### Request Body
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+#### Field Requirements
+- `email`: Valid email address
+- `password`: Minimum 6 characters
+
+### Response Status Codes
+
+| Status Code | Description |
+|------------|-------------|
+| 200        | User successfully logged in |
+| 400        | Invalid request body or validation error |
+| 401        | Invalid email or password |
+| 500        | Internal server error |
+
+### Example Request
+```json
+{
+  "email": "john.doe@example.com",
+  "password": "Password123"
+}
+```
+
+### Example Success Response
+```json
+{
+  "token": "jwt-token",
+  "user": {
+    "id": "uuid",
+    "email": "john.doe@example.com",
+    "firstname": "John",
+    "lastname": "Doe"
+  }
+}
+```
+
+### Example Error Response
+```json
+{
+  "errors": [
+    {
+      "msg": "Invalid email",
+      "param": "email",
+      "location": "body"
+    }
+  ]
+}
+```
+

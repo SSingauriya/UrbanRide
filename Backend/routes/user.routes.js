@@ -11,5 +11,26 @@ router.post('/register', [
 userController.registerUser
 );
 
+/**
+ * @api {post} /users/login Login a user
+ * @apiName LoginUser
+ * @apiGroup User
+ * 
+ * @apiParam {String} email User's email.
+ * @apiParam {String} password User's password.
+ * 
+ * @apiSuccess {String} token Authentication token.
+ * @apiSuccess {Object} user User's information.
+ * 
+ * @apiError {Object[]} errors List of validation errors.
+ * @apiError {String} message Error message.
+ */
+
+router.post('/login', [
+    body('email').isEmail().withMessage('Invalid email'),
+    body('password').isLength({min:6}).withMessage('Password must be at least 6 characters long'),
+],
+userController.loginUser
+);
 
 module.exports = router;
