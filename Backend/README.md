@@ -88,32 +88,19 @@ POST /captains/register
 ```json
 {
   "fullname": {
-    "firstname": "string",
-    "lastname": "string"
+    "firstname": "string", // User's first name (required)
+    "lastname": "string" // User's last name (optional)
   },
-  "email": "string",
-  "password": "string",
+  "email": "string", // Valid email address (required)
+  "password": "string", // User's password (required)
   "vehicle": {
-    "color": "string",
-    "plate": "string",
-    "capacity": "number",
-    "vehicleType": "string"
+    "color": "string", // Vehicle color (required)
+    "plate": "string", // Plate number of the vehicle (required)
+    "capacity": "number", // Capacity of the vehicle (required)
+    "vehicleType": "string" // Type of the vehicle (required)
   }
 }
 ```
-
-#### Field Requirements
-- `captain` (object):
-  - `fullname` (object).
-    - `firstname` (string): User's first name
-    - `lastname` (string): User's last name
-  - `email` (string): User's email address
-  - `password` (string): User's password
-  - `vehicle` (object):
-    - `color` (string): vehicle color
-    - `plate` (string): Plate number of the vehicle
-    - `capacity` (number): Capacity of the vehicle
-    - `vehicleType` (string): Type of the vehicle
 
 ### Response Status Codes
 
