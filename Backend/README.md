@@ -71,6 +71,106 @@ POST /users/register
 }
 ```
 
+## Register Captain
+Endpoint for creating a new captain account.
+
+### HTTP Method
+```
+POST
+```
+
+### Endpoint
+```
+POST /captains/register
+```
+
+### Request Body
+```json
+{
+  "fullname": {
+    "firstname": "string",
+    "lastname": "string"
+  },
+  "email": "string",
+  "password": "string",
+  "vehicle": {
+    "color": "string",
+    "plate": "string",
+    "capacity": "number",
+    "vehicleType": "string"
+  }
+}
+```
+
+#### Field Requirements
+- `captain` (object):
+  - `fullname` (object).
+    - `firstname` (string): User's first name
+    - `lastname` (string): User's last name
+  - `email` (string): User's email address
+  - `password` (string): User's password
+  - `vehicle` (object):
+    - `color` (string): vehicle color
+    - `plate` (string): Plate number of the vehicle
+    - `capacity` (number): Capacity of the vehicle
+    - `vehicleType` (string): Type of the vehicle
+
+### Response Status Codes
+
+| Status Code | Description |
+|------------|-------------|
+| 201        | Captain successfully created |
+| 400        | Invalid request body or validation error |
+| 500        | Internal server error |
+
+### Example Request
+```json
+{
+  "fullname": {
+    "firstname": "Jane",
+    "lastname": "Doe"
+  },
+  "email": "jane.doe@example.com",
+  "password": "Password123",
+  "vehicle": {
+    "color": "Red",
+    "plate": "ABC123",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+### Example Success Response
+```json
+{
+  "status": "success",
+  "message": "Captain registered successfully",
+  "data": {
+    "captainId": "uuid",
+    "fullname": {
+      "firstname": "Jane",
+      "lastname": "Doe"
+    },
+    "email": "jane.doe@example.com",
+    "vehicle": {
+      "color": "Red",
+      "plate": "ABC123",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+### Example Error Response
+```json
+{
+  "status": "error",
+  "message": "Invalid request body or validation error"
+}
+```
+
 ## Login User
 Endpoint for logging in a user.
 
